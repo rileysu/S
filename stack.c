@@ -132,6 +132,19 @@ int ScontainsCount(stackrep_t* sr, int data){
 	return found;
 }
 
+int ScontainsAll(stackrep_t* srto, stackrep_t* srfrom){
+        stacknode_t* curr = srfrom->head;
+        int found = 1;
+
+        while(curr != NULL && found){
+                found = Scontains(srto,curr->data);
+                curr = curr->next;
+        }
+
+        return found;
+}
+
+
 int SisEmpty(stackrep_t* sr){
 	assert(sr != NULL);
 	if (sr->head == NULL){

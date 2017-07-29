@@ -29,7 +29,7 @@ void Sclear(stackrep_t* sr);
 void Sfree(stackrep_t* sr);
 int Scontains(stackrep_t* sr, int data);
 int ScontainsCount(stackrep_t* sr, int data);
-//int ScontainsAll(stackrep_t* srto, stackrep_t* srfrom);
+int ScontainsAll(stackrep_t* srto, stackrep_t* srfrom);
 int SisEmpty(stackrep_t* sr);
 void Sremove(stackrep_t* sr, stacknode_t* qnpre, stacknode_t* qnrem);
 void SremoveIfPresent(stackrep_t* sr, int data);
