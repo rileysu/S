@@ -20,7 +20,6 @@ stacknode_t* SinitStackNode(){
 }
 
 void Spush(stackrep_t* sr, int data){
-	assert(sr != NULL);
 
 	if (SisEmpty(sr)){
 		sr->head = SinitStackNode();
@@ -37,14 +36,12 @@ void Spush(stackrep_t* sr, int data){
 }
 
 void SpushAll(stackrep_t* srnew, stackrep_t* srold){
-        assert( (srnew != NULL) && (srold != NULL) );
         while(!SisEmpty(srold)){
                 Spush(srnew,Spop(srold));
         }
 }
 
 void ScopyAll(stackrep_t* srnew, stackrep_t* srold){
-        assert( (srnew != NULL) && (srold != NULL) );
 
         stacknode_t* curr = srold->head;
 
@@ -56,13 +53,11 @@ void ScopyAll(stackrep_t* srnew, stackrep_t* srold){
 
 
 int Speek(stackrep_t* sr){
-	assert ( (sr != NULL) && (sr->head != NULL) );
 
 	return sr->head->data;	
 }
 
 int Spop(stackrep_t* sr){
-	assert ( (sr != NULL) && (sr->head != NULL) );
 
 	stacknode_t* curr = sr->head;
 	int data = curr->data;
@@ -79,7 +74,6 @@ int Spop(stackrep_t* sr){
 }
 
 void Sclear(stackrep_t* sr){
-	assert(sr != NULL);
 	stacknode_t* curr = sr->head;
 	
 	for (int i = 0; i < sr->size; i++){
@@ -95,13 +89,11 @@ void Sclear(stackrep_t* sr){
 }
 
 void Sfree(stackrep_t* sr){
-	assert(sr != NULL);
 	Sclear(sr);
 	free(sr);
 }
 
 int Scontains(stackrep_t* sr, int data){
-	assert(sr != NULL);
 	stacknode_t* curr = sr->head;
 	int found = 0;
 
@@ -118,7 +110,6 @@ int Scontains(stackrep_t* sr, int data){
 }
 
 int ScontainsCount(stackrep_t* sr, int data){
-	assert(sr != NULL);
 	stacknode_t* curr = sr->head;
 	int found = 0;
 
@@ -146,7 +137,6 @@ int ScontainsAll(stackrep_t* srto, stackrep_t* srfrom){
 
 
 int SisEmpty(stackrep_t* sr){
-	assert(sr != NULL);
 	if (sr->head == NULL){
 		return 1;
 	}
@@ -156,7 +146,6 @@ int SisEmpty(stackrep_t* sr){
 }
 
 void Sremove(stackrep_t* sr, stacknode_t* snpre, stacknode_t* snrem){
-	assert( (sr != NULL) && (snrem != NULL) );
 
 	if (snpre == NULL){
 		snpre = snrem;
@@ -179,7 +168,6 @@ void Sremove(stackrep_t* sr, stacknode_t* snpre, stacknode_t* snrem){
 }
 
 void SremoveIfPresent(stackrep_t* sr, int data){
-	assert(sr != NULL);
 	while (sr->head->data == data){
 		Sremove(sr,NULL,sr->head);
 	}
@@ -196,7 +184,6 @@ void SremoveIfPresent(stackrep_t* sr, int data){
 }
 
 void SremoveAllIfPresent(stackrep_t* srto, stackrep_t* srfrom){
-	assert( (srto != NULL) && (srfrom != NULL));
 	stacknode_t* curr = srfrom->head;
 
 	for (int i = 0; i < srfrom->size; i++){
@@ -206,14 +193,12 @@ void SremoveAllIfPresent(stackrep_t* srto, stackrep_t* srfrom){
 }
 
 int Ssize(stackrep_t* sr){
-	assert(sr != NULL);
 	return sr->size;
 }
 
 //DIAG
 
 void SprintDiag(stackrep_t* sr){
-	assert(sr != NULL);
 	printf("------------------------------\n");
 	
 	printf("Stack Data:");
